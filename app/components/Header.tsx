@@ -5,7 +5,7 @@ import Insta from "../images/mdi_instagram.png"
 import TikTok from "../images/tiktok.png"
 const Header = () => {
   const [currency, setCurrency] = useState('CAD');
-  const [language, setLanguage] = useState('EN');
+
 
   return (
     <div className="bg-white text-black h-[3rem] p-3 text-[0.8rem] flex justify-end items-center font-radio-canada">
