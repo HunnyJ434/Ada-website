@@ -1,22 +1,9 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+
 import shopImage from "../images/shopImage.webp";  // Image import
 
 const HomeShop: React.FC = () => {
-  const [offsetY, setOffsetY] = useState(0);
-
-  const handleScroll = () => {
-    setOffsetY(window.scrollY);
-  };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+ 
   return (
     <div>
       {/* Parallax Section */}
