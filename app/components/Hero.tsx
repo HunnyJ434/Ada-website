@@ -28,7 +28,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setFade(false);
-    }, 1000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
@@ -46,7 +46,7 @@ const Hero = () => {
   const { heading, text, text2, imageUrl } = heroData[index];
 
   return (
-    <div>
+    <div className="mt-[4rem]"> 
       <style jsx>{`
         @keyframes slideUp {
           from {
@@ -63,7 +63,7 @@ const Hero = () => {
         }
       `}</style>
       <div
-        className={`flex items-center justify-center text-white h-[27rem] font-radio-canada transition-opacity duration-1000 ${fade ? 'opacity-100' : 'opacity-0'}`}
+        className={`flex items-center justify-center text-white h-[31rem] font-radio-canada transition-opacity duration-1000 ${fade ? 'opacity-100' : 'opacity-0'}`}
         style={{
           backgroundImage: `url(${imageUrl})`,
           backgroundSize: 'cover',
@@ -77,9 +77,6 @@ const Hero = () => {
           {text2 && <p className="text-[1rem] item-center font-light font-radio-canada mb-2 mb-4 animate-slide-up">{text2}</p>}
           <button className="bg-[#670305] text-white font-bold py-2 px-4 w-[10rem] h-[3rem] rounded-lg animate-slide-up"><h1 className='text-[0.9rem] font-light'>SHOP NOW</h1></button>
         </div>
-      </div>
-      <div className='h-[100rem]'>
-          <h1>Under construction</h1>
       </div>
     </div>
   );
