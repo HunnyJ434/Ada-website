@@ -4,6 +4,7 @@ import Slogan from "./components/Slogan";
 import BestSellers from "./components/BestSellers";
 import HomeShop from "./components/HomeShop";
 import AboutSection from "./components/About";
+import LastSection from "./components/LastSection";
 export default function Home() {
   return (
     <div className="bg-white">
@@ -12,6 +13,7 @@ export default function Home() {
         <BestSellers/>
         <HomeShop/>
         <AboutSection/>
+        <LastSection/>
     </div>
   );
 }

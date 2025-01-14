@@ -46,7 +46,7 @@ const Hero = () => {
   const { heading, text, text2, imageUrl } = heroData[index];
 
   return (
-    <div className="mt-[4rem]"> 
+    <div className="mt-[10rem]"> 
       <style jsx>{`
         @keyframes slideUp {
           from {

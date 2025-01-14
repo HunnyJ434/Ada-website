@@ -2,42 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 /* Importing a Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 
-@font-face {
-  font-family: "Radio Canada", sans-serif;
-  src: url('/fonts/TCC.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
+.animate-scroll {
+  display: flex;
+  animation: scroll 16s linear infinite;
 }
 
+
 @font-face {
-  font-family: "Radio Canada", sans-serif;
-  src: url('/fonts/TCCB.TTF') format('truetype');
-  font-weight: 700;
+  font-family: "Mulish", serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: "Radio Canada", sans-serif;
+  font-family: "Mulish", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
