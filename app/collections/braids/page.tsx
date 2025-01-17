@@ -1,3 +1,4 @@
+'use client'
 import { sanityClient } from '../../../sanity';
 import eye_icon from "../../images/eye_icon.png"
 import {useState, useEffect } from 'react';
