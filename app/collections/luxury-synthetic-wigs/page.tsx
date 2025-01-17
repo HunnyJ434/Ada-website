@@ -11,7 +11,7 @@ export interface Product {
   }
   
 async function fetchProducts(): Promise<Product[]> {
-    const query = `*[_type == "braids"]{
+    const query = `*[_type == "luxury-synthetic-wigs"]{
       _id,
       name,
       "imageUrl": image.asset->url,
@@ -19,18 +19,18 @@ async function fetchProducts(): Promise<Product[]> {
       fromPrice,
       oldPrice
     }`;
-    const braids = await sanityClient.fetch(query, {}, { 
+    const luxurySyntheticWigs = await sanityClient.fetch(query, {}, { 
       tag: `crochets-${Date.now()}`
     });
-    return braids;
+    return luxurySyntheticWigs;
   }
   
-  export default async function Braids() {
+  export default async function LuxurySyntheticWigs() {
     const products = await fetchProducts();
 
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
-        <h1 className="text-center">Braids</h1>
+        <h1 className="text-center">Luxury Synthetic Wigs</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
       {products.map((product) => (

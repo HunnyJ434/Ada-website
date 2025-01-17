@@ -20,7 +20,7 @@ import {sanityClient} from '../../sanity';
 
 const  Footer: React.FC = () => {
     const [openSection, setOpenSection] = useState(null);
-
+    //typescript-eslint/no-explicit-any
     const toggleSection = (section:any) => {
       setOpenSection(openSection === section ? null : section);
     };
