@@ -32,13 +32,7 @@ async function fetchProducts(): Promise<Product[]> {
 
     const { data: session } = useSession();
 
-    if (!session) {
-      return (
-          <div className="min-h-screen flex items-center justify-center">
-              <p className="text-center text-gray-700">You are not logged in. Please <Link className='font-[blue] text-[blue]' href="./login">sign in.</Link> </p>
-          </div>
-      );
-  }
+
     const [products, setProducts] = useState<Product[]>()
     useEffect(() => {
       const fetchData = async () => {
@@ -48,12 +42,19 @@ async function fetchProducts(): Promise<Product[]> {
     
       fetchData();
     }, []);
-
+    if (!session) {
+      return (
+          <div className="min-h-screen flex items-center justify-center">
+              <p className="text-center text-gray-700">You are not logged in. Please <Link className='font-[blue] text-[blue]' href="./login">sign in.</Link> </p>
+          </div>
+      );
+  }
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
         <h1 className="text-center">Wholesale</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
+          
       {products?.map((product) => (
         <div key={product._id} className="relative group rounded-lg z-100 text-[#111111]">
           <div className="relative group rounded-lg z-100 text-[#111111]">
