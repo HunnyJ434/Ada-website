@@ -13,7 +13,7 @@ export interface Product {
   }
   
 async function fetchProducts(): Promise<Product[]> {
-    const query = `*[_type == "luxury-synthetic-wigs"]{
+    const query = `*[_type == "synthetic-weave"]{
       _id,
       name,
       "imageUrl": image.asset->url,
@@ -21,13 +21,13 @@ async function fetchProducts(): Promise<Product[]> {
       fromPrice,
       oldPrice
     }`;
-    const luxurySyntheticWigs = await sanityClient.fetch(query, {}, { 
-      tag: `luxury-synthetic-wigs-${Date.now()}`
+    const syntheticWeave = await sanityClient.fetch(query, {}, { 
+      tag: `synthetic-weave-${Date.now()}`
     });
-    return luxurySyntheticWigs;
+    return syntheticWeave;
   }
   
-  export default function LuxurySyntheticWigs() {
+  export default function SyntheticWeave() {
     const [products, setProducts] = useState<Product[]>()
     const router = useRouter();
     useEffect(() => {
@@ -43,7 +43,7 @@ async function fetchProducts(): Promise<Product[]> {
     };
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
-        <h1 className="text-center">Luxury Synthetic Wigs</h1>
+        <h1 className="text-center">Synthetic Weave</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
       {products?.map((product) => (

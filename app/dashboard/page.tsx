@@ -17,7 +17,6 @@ const handleSignOut = async () => {
 
   };
 
-console.log(session);
   return (
     <div className='flex mt-[10rem] py-5'>
         <div className='flex flex-col w-1/3 space-y-3 text-[0.9rem] text-thin px-[4rem]'>

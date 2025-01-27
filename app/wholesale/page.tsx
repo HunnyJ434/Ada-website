@@ -1,8 +1,9 @@
 'use client'
-import { sanityClient } from '../../../sanity';
-import eye_icon from "../../images/eye_icon.png"
+import { sanityClient } from '../../sanity';
+import eye_icon from "../images/eye_icon.png"
 import {useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
+import Link from 'next/link'; 
 export interface Product {
     _id: string;
     name: string;
@@ -13,7 +14,7 @@ export interface Product {
   }
   
 async function fetchProducts(): Promise<Product[]> {
-    const query = `*[_type == "luxury-synthetic-wigs"]{
+    const query = `*[_type == "wholesale"]{
       _id,
       name,
       "imageUrl": image.asset->url,
@@ -21,15 +22,24 @@ async function fetchProducts(): Promise<Product[]> {
       fromPrice,
       oldPrice
     }`;
-    const luxurySyntheticWigs = await sanityClient.fetch(query, {}, { 
-      tag: `luxury-synthetic-wigs-${Date.now()}`
+    const wholesale = await sanityClient.fetch(query, {}, { 
+      tag: `wholesale-${Date.now()}`
     });
-    return luxurySyntheticWigs;
+    return wholesale;
   }
   
-  export default function LuxurySyntheticWigs() {
+  export default function Wholesale() {
+
+    const { data: session } = useSession();
+
+    if (!session) {
+      return (
+          <div className="min-h-screen flex items-center justify-center">
+              <p className="text-center text-gray-700">You are not logged in. Please <Link className='font-[blue] text-[blue]' href="./login">sign in.</Link> </p>
+          </div>
+      );
+  }
     const [products, setProducts] = useState<Product[]>()
-    const router = useRouter();
     useEffect(() => {
       const fetchData = async () => {
         const result = await fetchProducts();
@@ -38,12 +48,10 @@ async function fetchProducts(): Promise<Product[]> {
     
       fetchData();
     }, []);
-    const handleProductClick = (id: string) => {
-      router.push(`/product/${id}`);
-    };
+
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
-        <h1 className="text-center">Luxury Synthetic Wigs</h1>
+        <h1 className="text-center">Wholesale</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
       {products?.map((product) => (

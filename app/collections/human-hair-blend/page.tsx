@@ -13,7 +13,7 @@ export interface Product {
   }
   
 async function fetchProducts(): Promise<Product[]> {
-    const query = `*[_type == "luxury-synthetic-wigs"]{
+    const query = `*[_type == "human-hair-blend"]{
       _id,
       name,
       "imageUrl": image.asset->url,
@@ -21,13 +21,13 @@ async function fetchProducts(): Promise<Product[]> {
       fromPrice,
       oldPrice
     }`;
-    const luxurySyntheticWigs = await sanityClient.fetch(query, {}, { 
-      tag: `luxury-synthetic-wigs-${Date.now()}`
+    const humanHairBlend = await sanityClient.fetch(query, {}, { 
+      tag: `human-hair-blend-${Date.now()}`
     });
-    return luxurySyntheticWigs;
+    return humanHairBlend;
   }
   
-  export default function LuxurySyntheticWigs() {
+  export default function HumanHairBlend() {
     const [products, setProducts] = useState<Product[]>()
     const router = useRouter();
     useEffect(() => {
@@ -43,11 +43,12 @@ async function fetchProducts(): Promise<Product[]> {
     };
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
-        <h1 className="text-center">Luxury Synthetic Wigs</h1>
+        <h1 className="text-center">Human Hair Blend</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
       {products?.map((product) => (
-        <div key={product._id} className="relative group rounded-lg z-100 text-[#111111]">
+        <div key={product._id} className="relative group rounded-lg z-100 text-[#111111]" onClick={() => handleProductClick(product._id)}
+        style={{ cursor: 'pointer' }}>
           <div className="relative group rounded-lg z-100 text-[#111111]">
           {product.discount && (
             <div className="px-3 py-1  mt-2 ml-2 text-white  z-[1000] bg-red-500 absolute rounded-full">

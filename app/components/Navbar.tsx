@@ -102,13 +102,13 @@ const Navbar = () => {
                   Synthetic Wig
                 </Link>
                 <Link
-                  href="/collections/affordable-luxury-wigs"
+                  href="/collections/human-hair-blend"
                   className="block px-4 py-2 hover:bg-gray-200"
                 >
                   Human Hair Blend
                 </Link>
                 <Link
-                  href="/collections/affordable-luxury-wigs"
+                  href="/collections/luxury-wigs"
                   className="block px-4 py-2 hover:bg-gray-200"
                 >
                   Luxury Wigs

@@ -38,8 +38,8 @@ const LoginPage = () => {
   return (
     <div className="mb-[5rem] mt-[10rem]">
         <h1 className="text-[2.7rem] text-center font-semibold text-black mb-[3rem]">Log in</h1>
-        <div className="px-[3rem] flex">
-            <div className="w-1/2">
+        <div className="ml-3 flex">
+            <div className="w-1/2 mr-3">
             <h1 className="text-[1.5rem] ml-[4rem]  font-semibold text-black ">Log in</h1>  
             <form className="flex flex-col w-80 ml-[4rem] mt-[2rem] rounded-lg bg-white" onSubmit={handleLogin}>
                 <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required className="mb-3 p-2 border h-[2.8rem] w-[33rem] border-gray-300 rounded-lg"/>

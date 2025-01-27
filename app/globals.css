@@ -32,3 +32,69 @@ body {
   font-style: normal;
 }
 
+.description {
+  overflow-wrap: break-word; /* Ensures words break properly */
+  word-wrap: break-word; /* Provides compatibility for older browsers */
+  max-height: 7rem; /* Limit the height if necessary */
+  overflow: hidden; 
+}
+
+@layer components {
+  @keyframes shrink {
+    0% {
+      width: 100%;
+      left: 0;
+    }
+    100% {
+      width: 0%;
+      left: 100%;
+    }
+  }
+
+  @keyframes grow {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .shrink {
+    animation: shrink 0.5s forwards;
+  }
+
+  .grow {
+    animation: grow 0.5s forwards;
+    animation-delay: 5s; /* Delay black line from growing until the blue line has disappeared */
+  }
+
+  /* Default state */
+  .blue-line {
+    width: 100%;
+    transition: width 0.5s ease-in-out;
+  }
+
+  .black-line {
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+  }
+
+  /* On hover: Shrink blue line first, then grow black line */
+  .group:hover .blue-line {
+    width: 0%;
+  }
+
+  .group:hover .black-line {
+    width: 100%;
+  }
+
+  /* On hover out: Reverse actions */
+  .group:not(:hover) .blue-line {
+    width: 100%;
+  }
+
+  .group:not(:hover) .black-line {
+    width: 0%;
+  }
+}

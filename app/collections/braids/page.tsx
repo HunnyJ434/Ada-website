@@ -2,6 +2,7 @@
 import { sanityClient } from '../../../sanity';
 import eye_icon from "../../images/eye_icon.png"
 import {useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 export interface Product {
     _id: string;
     name: string;
@@ -21,13 +22,14 @@ async function fetchProducts(): Promise<Product[]> {
       oldPrice
     }`;
     const braids = await sanityClient.fetch(query, {}, { 
-      tag: `crochets-${Date.now()}`
+      tag: `braids-${Date.now()}`
     });
     return braids;
   }
   
   export default function Braids() {
     const [products, setProducts] = useState<Product[]>()
+    const router = useRouter();
     useEffect(() => {
       const fetchData = async () => {
         const result = await fetchProducts();
@@ -36,13 +38,18 @@ async function fetchProducts(): Promise<Product[]> {
     
       fetchData();
     }, []);
+    const handleProductClick = (id: string) => {
+      router.push(`/product/${id}`);
+    };
+  
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
         <h1 className="text-center">Braids</h1>
         <div className="container pl-[4rem] text-center flex flex-col py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-[1.5rem] gap-x-[9rem] ">
       {products?.map((product) => (
-        <div key={product._id} className="relative group rounded-lg z-100 text-[#111111]">
+        <div key={product._id} className="relative group rounded-lg z-100 text-[#111111]"   onClick={() => handleProductClick(product._id)}
+              style={{ cursor: 'pointer' }}>
           <div className="relative group rounded-lg z-100 text-[#111111]">
           {product.discount && (
             <div className="px-3 py-1  mt-2 ml-2 text-white  z-[1000] bg-red-500 absolute rounded-full">

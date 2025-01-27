@@ -2,6 +2,7 @@
 import { sanityClient } from '../../../sanity';
 import eye_icon from "../../images/eye_icon.png"
 import {useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 export interface Product {
     _id: string;
     name: string;
@@ -28,6 +29,7 @@ async function fetchProducts(): Promise<Product[]> {
   
   export default function Crochets() {
     const [products, setProducts] = useState<Product[]>()
+    const router = useRouter();
     useEffect(() => {
       const fetchData = async () => {
         const result = await fetchProducts();
@@ -36,6 +38,9 @@ async function fetchProducts(): Promise<Product[]> {
     
       fetchData();
     }, []);
+    const handleProductClick = (id: string) => {
+      router.push(`/product/${id}`);
+    };
   return (
     <div className="mt-[16rem] mb-[10rem]  text-[2.7rem]">
         <h1 className="text-center">Crochets</h1>
